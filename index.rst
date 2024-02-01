@@ -1,20 +1,19 @@
-.. aprendedjango documentation master file, created by
-   sphinx-quickstart on Thu Feb  1 17:09:49 2024.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+##############
+Aprende Django
+##############
 
-Welcome to aprendedjango's documentation!
-=========================================
+Aprende `Django`_ y desarrolla **aplicaciones web** con `Python`_.
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+Licencia:
+   Creative Commons Reconocimiento 4.0 Internacional: `CC BY 4.0`_.
 
+   .. image:: _static/img/ccby.png
 
+.. hint::
+   **"Programming is not about typing, it's about thinking."** -- Rich Hickey
 
-Indices and tables
-==================
+.. --------------- Hyperlinks ---------------
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. _CC BY 4.0: https://creativecommons.org/licenses/by/4.0/deed.es_ES
+.. _Django: https://www.djangoproject.com/
+.. _Python: https://www.python.org/

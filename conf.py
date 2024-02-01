@@ -7,9 +7,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'aprendedjango'
-copyright = '2024, Sergio Delgado Quintero'
+copyright = 'Sergio Delgado Quintero'
 author = 'Sergio Delgado Quintero'
-release = '1.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
