@@ -1,0 +1,7 @@
+.vscode
+.DS_Store
+_build
+.artwork
+*.pyc
+.python-version
+*-journal
