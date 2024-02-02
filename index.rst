@@ -2,7 +2,12 @@
 Aprende Django
 ##############
 
-Aprende `Django`_ y desarrolla **aplicaciones web** con `Python`_.
+.. raw:: html
+   :file: badges.html
+
+:fa:`r:star#455A64` Aprende `Django`_ y desarrolla **aplicaciones web** con `Python`_. [#story-set]_
+
+.. image:: _static/img/web-creator.gif
 
 Licencia:
    Creative Commons Reconocimiento 4.0 Internacional: `CC BY 4.0`_.
@@ -12,8 +17,14 @@ Licencia:
 .. hint::
    **"Programming is not about typing, it's about thinking."** -- Rich Hickey
 
+
+.. --------------- Footnotes ---------------
+
+.. [#story-set] Animación cortesía de `Storyset`_
+
 .. --------------- Hyperlinks ---------------
 
 .. _CC BY 4.0: https://creativecommons.org/licenses/by/4.0/deed.es_ES
 .. _Django: https://www.djangoproject.com/
 .. _Python: https://www.python.org/
+.. _Storyset: https://storyset.com/people 

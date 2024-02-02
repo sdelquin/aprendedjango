@@ -1,0 +1,6 @@
+/* Footnotes section styling */
+aside.footnote-list {
+  margin-top: 4rem;
+  border-top: 1px solid var(--color-background-border);
+  padding-top: 1rem;
+}
