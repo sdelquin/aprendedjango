@@ -53,3 +53,4 @@ html_title = 'Aprende Django'
 
 ogp_site_url = 'https://aprendedjango.es/'
 ogp_image = 'https://raw.githubusercontent.com/sdelquin/aprendedjango/main/_static/img/aprendedjango-logo.png'
+ogp_site_name = False

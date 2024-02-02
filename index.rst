@@ -1,3 +1,6 @@
+.. meta::
+    :property=og:description: Tutorial gratuito y en español para aprender a utilizar Django y desarrollar páginas web con Python 
+
 ##############
 Aprende Django
 ##############
