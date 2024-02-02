@@ -16,7 +16,10 @@ description = 'Aprende Django'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['extra_roles']
+extensions = [
+    'extra_roles',
+    'sphinxext.opengraph',
+]
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'prolog.rst']
@@ -44,3 +47,9 @@ html_theme_options = {
 html_favicon = 'favicon.png'
 html_show_sourcelink = False
 html_title = 'Aprende Django'
+
+# -- Options for Open Graph -------------------------------------------------
+# https://sphinxext-opengraph.readthedocs.io/en/latest/
+
+ogp_site_url = 'https://aprendedjango.es/'
+ogp_image = 'https://aprendedjango.es/_static/aprendedjango-logo.svg'
