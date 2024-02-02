@@ -52,4 +52,4 @@ html_title = 'Aprende Django'
 # https://sphinxext-opengraph.readthedocs.io/en/latest/
 
 ogp_site_url = 'https://aprendedjango.es/'
-ogp_image = 'https://aprendedjango.es/_images/aprendedjango-logo.png'
+ogp_image = 'https://raw.githubusercontent.com/sdelquin/aprendedjango/main/_static/img/aprendedjango-logo.png'
