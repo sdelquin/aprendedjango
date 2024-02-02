@@ -9,10 +9,15 @@ Aprende Django
 
 .. image:: _static/img/web-creator.gif
 
-Licencia:
+\
+
+.. image:: _static/img/ccheart_red.svg
+   :align: left
+
+**Licencia**:
    Creative Commons Reconocimiento 4.0 Internacional: `CC BY 4.0`_.
 
-   .. image:: _static/img/ccby.png
+|clearboth|
 
 .. hint::
    **"Programming is not about typing, it's about thinking."** -- Rich Hickey
