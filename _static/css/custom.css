@@ -4,3 +4,13 @@ aside.footnote-list {
   border-top: 1px solid var(--color-background-border);
   padding-top: 1rem;
 }
+
+/* https://github.com/pradyunsg/furo/issues/28#issuecomment-1380549435 */
+.theme-toggle-container {
+  display: none;
+}
+
+/* Hide default footer */
+div.bottom-of-page {
+  display: none;
+}

@@ -11,6 +11,7 @@ import os
 project = 'aprendedjango'
 copyright = 'Sergio Delgado Quintero'
 author = 'Sergio Delgado Quintero'
+description = 'Aprende Django'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -35,6 +36,11 @@ STATIC_DIR = f'{html_static_path[0]}/'
 html_css_files = [
     p.replace(STATIC_DIR, '') for p in glob.glob(os.path.join(STATIC_DIR, 'css/*.css'))
 ]
+html_js_files = [p.replace(STATIC_DIR, '') for p in glob.glob(os.path.join(STATIC_DIR, 'js/*.js'))]
+html_logo = '_static/img/aprendedjango-logo.svg'
 html_theme_options = {
     'sidebar_hide_name': True,
 }
+html_favicon = 'favicon.png'
+html_show_sourcelink = False
+html_title = 'Aprende Django'

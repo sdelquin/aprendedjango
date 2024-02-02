@@ -5,7 +5,7 @@ Aprende Django
 .. raw:: html
    :file: badges.html
 
-:fa:`r:star#455A64` Aprende `Django`_ y desarrolla **aplicaciones web** con `Python`_. [#story-set]_
+:fa:`rocket#455A64` Aprende `Django`_ y desarrolla **aplicaciones web** con `Python`_. [#story-set]_
 
 .. image:: _static/img/web-creator.gif
 
@@ -15,7 +15,7 @@ Aprende Django
    :align: left
 
 **Licencia**:
-   Creative Commons Reconocimiento 4.0 Internacional: `CC BY 4.0`_.
+   :fa:`b:creative-commons-by` Creative Commons Reconocimiento 4.0 Internacional: `CC BY 4.0`_.
 
 |clearboth|
 
