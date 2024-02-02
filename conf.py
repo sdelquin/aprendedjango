@@ -8,10 +8,10 @@
 import glob
 import os
 
-project = 'aprendedjango'
+project = 'Aprende Django'
+description = 'Aprende Django'
 copyright = 'Sergio Delgado Quintero'
 author = 'Sergio Delgado Quintero'
-description = 'Aprende Django'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -53,4 +53,3 @@ html_title = 'Aprende Django'
 
 ogp_site_url = 'https://aprendedjango.es/'
 ogp_image = 'https://raw.githubusercontent.com/sdelquin/aprendedjango/main/_static/img/aprendedjango-logo.png'
-ogp_site_name = False
