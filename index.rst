@@ -7,9 +7,11 @@ Aprende Django
 
 :fa:`rocket#455A64` Aprende `Django`_ y desarrolla **aplicaciones web** con `Python`_. [#story-set]_
 
-.. image:: _static/img/web-creator.gif
+|spacer1|
 
-\
+.. image:: _static/img/web-creator.svg
+
+|spacer1|
 
 .. image:: _static/img/ccheart_red.svg
    :align: left
