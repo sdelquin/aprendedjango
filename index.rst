@@ -29,7 +29,7 @@ Aprende Django
 
 .. --------------- Footnotes ---------------
 
-.. [#story-set] Animación cortesía de `Storyset`_
+.. [#story-set] Ilustración cortesía de `Storyset`_
 
 .. --------------- Hyperlinks ---------------
 
