@@ -14,3 +14,7 @@ aside.footnote-list {
 div.bottom-of-page {
   display: none;
 }
+
+img.sidebar-logo {
+  border-radius: 1rem;
+}

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="110px" height="110px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g transform="matrix(1,0,0,1,-830.276,-410.276)">
-        <g transform="matrix(1,0,0,1,819.276,399.276)">
-            <g transform="matrix(1,0,0,1,-819.276,-399.276)">
-                <path d="M937.499,413.054C939.214,414.77 940.276,417.14 940.276,419.756L940.276,510.797C940.276,516.029 936.029,520.276 930.797,520.276L839.756,520.276C837.14,520.276 834.77,519.214 833.054,517.499L937.499,413.054Z" style="fill:rgb(20,100,69);"/>
+    <g transform="matrix(1,0,0,1,-130.5,-95.6583)">
+        <g transform="matrix(1,0,0,1,185.276,127.435)">
+            <g id="Marco-recto" serif:id="Marco recto" transform="matrix(1,0,0,1,-65.7763,-42.7763)">
+                <g transform="matrix(1,0,0,1,-819.276,-399.276)">
+                    <path d="M940.276,410.276L940.276,520.276L830.276,520.276L940.276,410.276Z" style="fill:rgb(20,100,69);"/>
+                </g>
+                <g transform="matrix(1,0,0,1,-819.276,-399.276)">
+                    <path d="M830.276,520.276L830.276,410.276L940.276,410.276L830.276,520.276Z" style="fill:rgb(26,133,92);"/>
+                </g>
             </g>
         </g>
-        <g transform="matrix(1,0,0,1,819.276,399.276)">
-            <g transform="matrix(0.429688,0,0,0.429688,11,11)">
-                <path d="M6.464,249.536C2.471,245.542 0,240.027 0,233.939L0,22.061C0,9.885 9.885,0 22.061,0L233.939,0C240.027,0 245.542,2.471 249.536,6.464L6.464,249.536Z" style="fill:rgb(26,133,92);"/>
-            </g>
-        </g>
-        <g transform="matrix(1,0,0,1,819.276,399.276)">
-            <g transform="matrix(0.255582,0,0,0.255582,16.2894,16.7839)">
+        <g transform="matrix(1,0,0,1,185.276,127.435)">
+            <g transform="matrix(0.232347,0,0,0.232347,-44.9678,-25.5183)">
                 <g transform="matrix(1.14159,0,0,1.14159,-987.049,-480.756)">
                     <circle cx="1035" cy="637" r="113" style="fill:rgb(40,206,142);"/>
                 </g>
@@ -25,8 +25,8 @@
                 </g>
             </g>
         </g>
-        <g transform="matrix(1,0,0,1,819.276,399.276)">
-            <g transform="matrix(0.495662,0,0,0.495662,-409.124,-199.66)">
+        <g transform="matrix(1,0,0,1,185.276,127.435)">
+            <g transform="matrix(0.450602,0,0,0.450602,-431.708,-222.285)">
                 <g transform="matrix(46.0695,0,0,46.0695,867,479)">
                     <path d="M0.418,-0.261L0.339,-0.502L0.26,-0.261L0.418,-0.261ZM0.679,-0L0.504,-0L0.47,-0.105L0.209,-0.105L0.175,-0L0,-0L0.238,-0.68L0.441,-0.68L0.679,-0Z" style="fill:white;fill-rule:nonzero;"/>
                 </g>
