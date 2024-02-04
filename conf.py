@@ -20,6 +20,7 @@ extensions = [
     'extra_roles',
     'sphinxext.opengraph',
     'sphinx.ext.autosectionlabel',
+    'sphinx_copybutton',
 ]
 
 autosectionlabel_prefix_document = True
@@ -56,3 +57,9 @@ html_title = 'Aprende Django'
 
 ogp_site_url = 'https://aprendedjango.es/'
 ogp_image = 'https://raw.githubusercontent.com/sdelquin/aprendedjango/main/_static/img/aprendedjango-logo.png'
+
+# -- Options for Copy button -------------------------------------------------
+# https://sphinx-copybutton.readthedocs.io/en/latest/use.html
+
+copybutton_prompt_text = r'>>> |\.\.\. |\$ |In \[\d*\]: | {2,5}\.\.\.: | {5,8}: '
+copybutton_prompt_is_regexp = True
