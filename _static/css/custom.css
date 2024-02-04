@@ -18,3 +18,30 @@ div.bottom-of-page {
 img.sidebar-logo {
   border-radius: 1rem;
 }
+
+a.headerlink {
+  text-decoration: none;
+}
+
+a.headerlink:hover {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+div.related-pages {
+  margin-bottom: 1rem;
+}
+
+/* Poner el caption de tablas debajo de ellas */
+table.docutils {
+  caption-side: bottom;
+}
+
+/* Separar un poco el caption de la tabla */
+table.docutils caption {
+  margin-top: 0.5rem;
+}
+
+.strike {
+  text-decoration: line-through;
+}

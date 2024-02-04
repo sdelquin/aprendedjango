@@ -25,3 +25,6 @@
 .. |spacer4| raw:: html
 
   <div style="height: 40px"></div>
+
+.. role:: strike
+    :class: strike

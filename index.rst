@@ -26,6 +26,12 @@ Aprende Django
 .. hint::
    **"Programming is not about typing, it's about thinking."** -- Rich Hickey
 
+.. toctree::
+   :hidden:
+
+   floor1/index
+
+
 
 .. --------------- Footnotes ---------------
 
