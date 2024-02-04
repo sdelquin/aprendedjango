@@ -30,6 +30,7 @@ Aprende Django
    :hidden:
 
    floor1/index
+   floor2/index
 
 
 

@@ -19,7 +19,10 @@ author = 'Sergio Delgado Quintero'
 extensions = [
     'extra_roles',
     'sphinxext.opengraph',
+    'sphinx.ext.autosectionlabel',
 ]
+
+autosectionlabel_prefix_document = True
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'prolog.rst']
