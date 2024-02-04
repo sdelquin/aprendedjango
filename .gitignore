@@ -5,3 +5,4 @@ _build
 *.pyc
 .python-version
 *-journal
+musicalia
