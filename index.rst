@@ -29,8 +29,8 @@ Aprende Django
 .. toctree::
    :hidden:
 
-   floor1/index
-   floor2/index
+   chapter1/index
+   chapter2/index
 
 
 

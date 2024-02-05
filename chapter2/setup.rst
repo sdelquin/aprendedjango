@@ -47,7 +47,7 @@ Django es un `paquete de Python <https://pypi.org/project/Django/>`_ que podemos
     $ pip install django
 
 .. caution::
-    Importante haber activado el :ref:`entorno virtual <floor2/setup:entorno virtual>` previo a instalar cualquier paquete.
+    Importante haber activado el :ref:`entorno virtual <chapter2/setup:entorno virtual>` previo a instalar cualquier paquete.
 
 *********************
 Creación del proyecto
