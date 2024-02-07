@@ -1,8 +1,8 @@
-runserver:
-    make livehtml
+runserver port='9000':
+    sphinx-autobuild --port {{ port }} . _build/html
 
-cleanrun: clean
-    make livehtml
+cleanrun port='9000': clean
+    just runserver {{ port }}
 
 clean:
     make clean

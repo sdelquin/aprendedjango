@@ -22,7 +22,7 @@ El motivo de dividir en capas el diseño de una aplicación es que se puedan **s
 
 En una aplicación se puede distinguir, de forma general, funciones de **presentación** (se encarga de dar formato a los datos para presentárselo al usuario final), **lógica de negocio** (utiliza los datos para ejecutar un proceso y obtener un resultado) y **persistencia** (que mantiene los datos almacenados de forma organizada).
 
-.. figure:: images/webdev-layers.png
+.. figure:: images/webtech/webdev-layers.png
     :align: center
 
     Capas en arquitectura web
@@ -78,7 +78,7 @@ La elección del lenguaje de programación es importante pero no decisiva. Hay q
 
 En cualquier caso, cuando hablamos de programación del lado del servidor, los lenguajes de programación tienen características que los diferencian tanto en tiempo de desarrollo, compilación y ejecución.
 
-.. figure:: images/web-langs.svg
+.. figure:: images/webtech/web-langs.svg
     :align: center
 
     Lenguajes de programación del lado del servidor
@@ -105,7 +105,7 @@ Los llamados "framework web" constituyen un conjunto de módulos que **permiten 
 
 En su gran mayoría, los framework web se basan en una arquitectura "MVC" o "Modelo-Vista-Controlador":
 
-.. figure:: images/mvc.jpg
+.. figure:: images/webtech/mvc.jpg
     :align: center
 
     Modelo Vista Controlador [#mvc]_
@@ -119,7 +119,7 @@ Este mecanismo de "renderizado" de las plantillas se realiza mediante un **motor
 
 Un ejemplo de plantilla:
 
-.. figure:: images/django-template.png
+.. figure:: images/webtech/django-template.png
     :align: center
 
     Ejemplo de plantilla de Django
@@ -136,7 +136,7 @@ En el lado del servidor, estas peticiones son procesadas por el servidor web. Es
 - `Servidor web Nginx`_ con `uwsgi`_ o `gunicorn`_
 - `Servidor web Apache`_ con `modphp`_ o `tomcat`_
 
-.. figure:: images/webserver-integration.svg
+.. figure:: images/webtech/webserver-integration.svg
     :align: center
 
     Integración de servidores de aplicación

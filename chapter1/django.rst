@@ -4,7 +4,7 @@ Django
 
 `Django`_ es un framework de desarrollo web de alto nivel, gratuito y de código abierto, **escrito en Python**. Se utiliza para crear aplicaciones web de forma rápida y segura, ya que proporciona una estructura lista para usar, incluyendo funcionalidades comunes como autenticación de usuarios, administración de contenido, mapas del sitio, entre otros. Django es altamente escalable y puede manejar miles de solicitudes, y su arquitectura está diseñada para utilizar eficientemente el hardware del sistema. Además, ofrece características avanzadas de seguridad y es ampliamente utilizado en la industria. Fue creado por `Adrian Holovaty`_ y `Simon Willison`_ en 2005.
 
-.. image:: images/django-logo.svg
+.. image:: images/django/django-logo.svg
     :align: center
 
 ****************
@@ -15,7 +15,7 @@ El nombre "Django" fue elegido en honor al músico de jazz `Django Reinhardt`_. 
 
 Los desarrolladores originales de Django, Adrian Holovaty y Simon Willison, eran fanáticos de la música de Django Reinhardt y decidieron nombrar el framework en su honor. El nombre refleja la pasión de los desarrolladores por la música y, al mismo tiempo, transmite la idea de creatividad, innovación y excelencia, valores que también se reflejan en el framework Django.
 
-.. figure:: images/django-reinhardt.jpg
+.. figure:: images/django/django-reinhardt.jpg
     :align: center
 
     Django Reinhardt

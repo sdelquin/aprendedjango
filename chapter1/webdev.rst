@@ -10,7 +10,7 @@ Introducción
 
 Seguro que ya sabes exactamente qué es una **página web**, e incluso conozcas cuáles son los pasos que se suceden para que, cuando visitas una web poniendo su dirección en el navegador, la página se descargue a tu equipo y se pueda mostrar. Sin embargo, este procedimiento que puede parecer sencillo, a veces no lo es tanto. **Todo depende de cómo se haya hecho la página en cuestión**.
 
-.. figure:: images/client-server.svg
+.. figure:: images/webdev/client-server.svg
     :align: center
 
     Comunicación cliente-servidor [#cliente-servidor]_
@@ -19,7 +19,7 @@ Cuando una **página web** se descarga al ordenador, su contenido define qué se
 
 Además, si la página está bien estructurada, la información que le indica al navegador el estilo con que se debe mostrar cada parte de la página estará almacenado en otro fichero, una **hoja de estilos** o **CSS** *(Abreviatura de "Hoja de estilos en cascada", del inglés Cascading Style Sheet - CSS)*. La hoja de estilos se encuentra indicada en la página web y el navegador la descarga junto a ésta. En ella nos podemos encontrar, por ejemplo, estilos que indican que el encabezado debe ir con tipo de letra Arial y en color rojo, o que los párrafos deben ir alineados a la izquierda.
 
-.. figure:: images/html-and-css.png
+.. figure:: images/webdev/html-and-css.png
     :align: center
 
     HTML + CSS [#html-and-css]_
@@ -33,7 +33,7 @@ Estos dos ficheros se descargan a tu ordenador desde un servidor web como respue
 
 Este es un ejemplo típico de una comunicación **cliente-servidor**. El cliente es el que hace la **petición** e inicia la comunicación, y el servidor es el que recibe la petición y la atiende mediante una **respuesta**. En este contexto, **el navegador es el cliente web**.
 
-.. figure:: images/request-response.svg
+.. figure:: images/webdev/request-response.svg
     :align: center
 
     Esquema de petición/respuesta HTML [#request-response]_
@@ -48,7 +48,7 @@ En contraposición a las páginas web estáticas existen las **páginas web din�
 
 |spacer1|
 
-.. figure:: images/static-request-vs-dynamic-request.svg
+.. figure:: images/webdev/static-request-vs-dynamic-request.svg
     :align: center
 
     Páginas web estáticas vs dinámicas [#static-vs-dynamic]_
@@ -110,7 +110,7 @@ Lugar de ejecución de código
 
 Cuando el navegador solicita a un servidor web una página, **es posible que antes de enviársela haya tenido que ejecutar, por sí mismo o por delegación, algún programa para obtenerla**. Ese programa es el que genera, en parte o en su totalidad, la página web que llega al cliente. En estos casos, **el código se ejecuta en el entorno del servidor web** y hablamos de **SERVER SIDE RENDERING (SSR)**:
 
-.. figure:: images/server-side-rendering.png
+.. figure:: images/webdev/server-side-rendering.png
     :align: center
 
     Server Side Rendering [#ssr-csr]_
@@ -125,7 +125,7 @@ Sin embargo, es posible realizar programas en los que el código JavaScript que 
 
 En nuestro ejemplo, cuando pulsas con el ratón encima de un correo que quieres leer, la página puede contener código Javascript que detecte la acción y, en ese instante, consultar a través de Internet el texto que contiene ese mismo correo y mostrarlo en la misma página, modificando su estructura en caso de que sea necesario. Es decir, sin salir de una página poder modificar su contenido en base a la información que se almacena en un servidor de Internet. En este escenario podemos hablar de **SPA (Single Page Applications)** o aplicaciones de una única página, algo muy relacionado con el llamado **CLIENT SIDE RENDERING (CSR)**:
 
-.. figure:: images/client-side-rendering.png
+.. figure:: images/webdev/client-side-rendering.png
     :align: center
 
     Client Side Rendering [#ssr-csr]_
@@ -137,7 +137,7 @@ Es muy habitual hablar de desarrollo "frontend" cuando nos referimos a la progra
 
 **Muchas de las aplicaciones web actuales utilizan estas dos tecnologías**: la ejecución de código en el servidor y en el cliente. Así, el código que se ejecuta en el servidor genera páginas web que ya incluyen código destinado a su ejecución en el navegador. Aquellas personas que se dedican al desarrollo de una aplicación en toda su extensión ("frontend" + "backend") se dice que trabajan en **desarrollo fullstack**.
 
-.. figure:: images/frontend-backend.svg
+.. figure:: images/webdev/frontend-backend.svg
     :align: center
 
     Frontend y Backend [#frontend-backend]_

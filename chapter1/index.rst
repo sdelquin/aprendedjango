@@ -18,7 +18,7 @@ En este capítulo se tratan los siguientes contenidos:
    :maxdepth: 2
 
    webdev
-   technologies
+   webtech
    django
 
 
