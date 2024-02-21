@@ -9,3 +9,6 @@ clean:
 
 html:
     make dirhtml
+
+ideas:
+    open ideas.pdf
