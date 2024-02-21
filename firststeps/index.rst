@@ -1,10 +1,10 @@
-##########
-Capítulo 2
-##########
+#########################
+Primeros pasos con Django
+#########################
 
 *Djane* ya ha adquirido sus conocimientos teóricos y conceptuales sobre el mundo de la programación web. En este capítulo le toca afrontar la dura tarea de empezar a crear un proyecto Django. [#story-set]_
 
-.. image:: images/chapter2.svg
+.. image:: images/hero.svg
 
 ********
 Sinopsis

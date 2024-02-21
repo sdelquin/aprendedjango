@@ -29,8 +29,8 @@ Aprende Django
 .. toctree::
    :hidden:
 
-   chapter1/index
-   chapter2/index
+   webdev/index
+   firststeps/index
 
 
 

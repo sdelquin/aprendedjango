@@ -2,7 +2,7 @@
 Modelos
 #######
 
-Como hemos visto en las :ref:`características de Django <chapter1/django:características>` hay un **ORM** que vincula tablas de la base de datos con objetos de Python.
+Como hemos visto en las :ref:`características de Django <webdev/django:características>` hay un **ORM** que vincula tablas de la base de datos con objetos de Python.
 
 Un modelo es simplemente una clase de Python que hereda características definidas (en otras clases) del propio framework de Django.
 
