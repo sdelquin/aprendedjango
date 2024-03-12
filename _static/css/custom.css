@@ -45,3 +45,10 @@ table.docutils caption {
 .strike {
   text-decoration: line-through;
 }
+
+/* Color de los números de línea en bloques de código */
+
+.highlight span.linenos {
+  color: lightgray;
+  box-shadow: -0.0625rem 0 lightgray inset;
+}

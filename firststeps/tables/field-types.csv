@@ -1,0 +1,14 @@
+Campo,Descripción,Parámetros importantes
+``BooleanField``,Representa un valor booleano,
+``CharField``,Representa una cadena de texto,``max_length``
+``DateField``,Representa una fecha,``auto_now`` ``auto_now_add``
+``DateTimeField``,Representa una fecha/hora,``auto_now`` ``auto_now_add``
+``DecimalField``,Representa un valor flotante (ideal para divisas),``max_digits`` ``decimal_places``
+``FileField``,Representa un archivo (genérico),``upload_to``
+``FloatField``,Representa un valor flotante (genérico),
+``ImageField``,Representa un archivo (de imagen),``upload_to``
+``IntegerField``,Representa un valor entero,
+``SlugField``,Representa un "slug" en cadena de texto,``max_length``
+``TextField``,Representa una cadena de texto (amplia),
+``TimeField``,Representa una hora,``auto_now`` ``auto_now_add``
+``URLField``,Representa una "url",

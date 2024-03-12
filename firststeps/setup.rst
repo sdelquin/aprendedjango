@@ -189,7 +189,7 @@ Esto significa que estamos usando la versión 5.0.1 de Django con la configuraci
 
 Esto significa que se ha levantado el servidor de desarrollo en el **puerto 8000** de nuestra máquina (``127.0.0.1`` o ``localhost``). Podemos parar el servidor de desarrollo pulsando :kbd:`Ctrl-C`.
 
-.. figure:: ./images/models/success-install.png
+.. figure:: ./images/setup/success-install.png
     :align: center
 
     Pantalla de inicio del servidor de desarrollo de Django
@@ -239,6 +239,43 @@ Ahora al lanzar el servidor de desarrollo no aparece el mensaje de las migracion
     Django version 5.0.1, using settings 'musicalia.settings'
     Starting development server at http://127.0.0.1:8000/
     Quit the server with CONTROL-C.
+
+***********************
+Interfaz administrativa
+***********************
+
+Django proporciona "out of the box" una interfaz administrativa que permite gestionar la información de la base de datos de forma muy cómoda y potente.
+
+Lo primero que necesitamos para acceder a esta inferfaz administrativa es crear una cuenta de "super usuario" que tendrá todos los privilegios dentro del proyecto. Para ello lanzamos el siguiente comando:
+
+.. code-block:: console
+
+    $ python manage.py createsuperuser
+    Username (leave blank to use 'sdelquin'): admin
+    Email address: admin@example.com
+    Password:
+    Password (again):
+    Superuser created successfully.
+
+.. hint::
+    Especialmente en un entorno de producción se recomienda que las contraseñas sean fuertes combinando múltiples tipos de caracteres y usando longitudes razonables.
+
+Ahora ya podemos acceder a http://localhost:8000/admin/ y nos aparecerá la ventana de login:
+
+.. figure:: images/setup/admin-login.png
+    :align: center
+
+    Ventana de login de la interfaz administrativa de Django
+
+Una vez dentro podemos observar que tenemos disponibles los menús de autenticación y autorización para gestinoar usuarios y grupos (predefinido en Django):
+
+.. figure:: images/setup/admin-dashboard.png
+    :align: center
+
+    Panel de control de la interfaz administrativa de Django
+
+
+
 
 
 .. --------------- Hyperlinks ---------------
