@@ -1,0 +1,6 @@
+Conversor,Descripción,Tipo devuelto
+``str``,Cadena de texto,``str``
+``int``,Valor entero,``int``
+``slug``,Cadena de texto sin espacios,``str``
+``uuid``,Identificador único,``UUID``
+``path``,Cadena de texto incluyendo ``/``,``str``

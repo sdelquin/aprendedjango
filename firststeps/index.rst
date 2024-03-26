@@ -18,6 +18,9 @@ En este capítulo se tratan los siguientes contenidos:
    setup
    apps
    models
+   urls
+   views
+   templates
 
 
 .. --------------- Footnotes ---------------
