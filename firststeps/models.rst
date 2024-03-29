@@ -440,8 +440,30 @@ Hay que tener en cuenta que si lo que buscamos con un ``get()`` no existe, se la
         Song.objects.get(name='Wonderwalk')
     DoesNotExist: Song matching query does not exist.
 
+Clave primaria
+--------------
 
+Hemos visto anteriormente que Django añade un campo :ref:`id <firststeps/models:identificador de tabla>` como **clave primaria** del modelo (tabla) **si no se especifica otra clave primaria alternativa**.
 
+Para "independizar" la clave primaria del campo ``id`` o de cualquier otro que especifique el usuario, Django proporciona el atributo ``pk``. Veamos su comportamiento:
+
+.. code-block::
+    :emphasize-lines: 3, 7, 10
+
+    >>> from songs.models import Song
+
+    >>> Song.objects.get(pk=1)
+    <Song: Wonderwall>
+
+    >>> song = Song.objects.get(name='Wonderwall')
+    >>> song.pk
+    1
+
+    >>> song.pk == song.id
+    True
+
+.. hint::
+    Es **recomendable** hacer uso del atributo ``pk`` siempre que queramos hacer referencia a la clave primaria de un modelo.
 
 
 .. [#field-reference] Véase la `referencia de campos de modelo`_ en la documentación de Django.

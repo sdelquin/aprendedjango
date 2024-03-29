@@ -64,7 +64,7 @@ Contexto:
   Es el conjunto de variables al que una plantilla tiene acceso. En el ejemplo anterior la variable ``songs`` está en el contexto ya que se ha pasado de forma explícita desde la vista.
 
 Etiqueta de plantilla:
-  Las etiquetas de plantilla se escriben usando los delimitadores ``{% %}``. Existe una amplia variedad de `etiquetas de plantilla predefinidas`_ en Django.
+  Las etiquetas de plantilla se escriben usando los delimitadores ``{% %}``. Existe una amplia variedad de `etiquetas de plantilla predefinidas`_ en Django. [#template-tag]_
 
 Acceso a variable:
   Para acceder a una variable en una plantilla usamos los delimitadores ``{{ }}``.
@@ -75,7 +75,7 @@ Si ahora accedemos a http://localhost:8000/song/ veremos la lista de canciones d
     :align: center
 
     Plantilla de lista de canciones
-
+  
 Plantilla de detalle
 ====================
 
@@ -109,13 +109,175 @@ Si ahora accedemos a http://localhost:8000/song/1/ veremos el detalle de la canc
 
     Plantilla de detalle de canción
 
+********************
+Enlazando plantillas
+********************
+
+Sería muy útil poder enlazar cada una de las canciones en el listado inicial con su correspondiente detalle. Para ello vamos a modificar la :ref:`plantilla de lista <firststeps/templates:plantilla de lista>` añadiendo el vínculo correspondiente.
+
+Una primera aproximación sería la siguiente:
+
+.. code-block:: htmldjango
+  :caption: :fa:`r:file-lines#green` ``songs/templates/songs/song/list.html``
+  :linenos:
+  :emphasize-lines: 3
+
+  <ul>
+    {% for song in songs %}
+      <li><a href="/songs/{{song.pk}}/">{{ song }}</a></li>  <!-- NOT THIS WAY! -->
+    {% endfor %}
+  </ul>
+
+En la L3 hemos añadido una etiqueta ``<a>`` apuntando a la url de detalle de cada canción. Pero esto se considera una **mala práctica** ya que, en el caso de que la url se modifique en el fichero ``urls.py`` tendríamos que rastrear todo nuestro código en busca de esa url y modificarla.
+
+Es por ello que **se recomienda** usar la etiqueta de plantilla `url`_ que permite "inyectar" una url en una plantilla a partir del **nombre de la url** definido en el fichero ``urls.py``. Veamos cómo quedaría nuestro ejemplo:
+
+.. code-block:: htmldjango
+  :caption: :fa:`r:file-lines#green` ``songs/templates/songs/song/list.html``
+  :linenos:
+  :emphasize-lines: 3
+
+  <ul>
+    {% for song in songs %}
+      <li><a href="{% url 'songs:song_detail' song.pk %}">{{ song }}</a></li>
+    {% endfor %}
+  </ul>
+  
+La etiqueta de plantilla ``{% url %}`` recibe:
+
+- El nombre de la url cualificado con su espacio de nombres. En este caso el espacio de nombres es ``songs`` ya que se ha definido así en el atributo ``app_name`` del fichero ``songs/urls.py``.
+- Los argumentos necesarios. En este caso pasamos el identificador de la canción.
+
+Por tanto, al acceder ahora a http://localhost:8000/songs/ veríamos los enlaces correctamente:
+  
+.. figure:: images/templates/song-list-with-links.png
+    :align: center
+
+    Plantilla de lista de canciones con enlaces
+
+**********************
+Herencia de plantillas
+**********************
+
+Supongamos que queremos poner algún tipo de cabecera a las plantillas indicando el nombre del proyecto "Musicalia". Si no tuviéramos otra herramienta, tendríamos que incluir esa cabecera en todas las plantillas que hayamos escrito.
+
+Sin embargo, Django proporciona una característica muy útil denominada `herencia de plantillas`_ que nos permite heredar desde una plantilla base.
+
+Plantilla base
+==============
+
+En una primera aproximación vamos a crear la siguiente **plantilla base**:
+
+.. code-block:: htmldjango
+  :caption: :fa:`r:file-lines#green` ``songs/templates/songs/base.html``
+  :linenos:
+
+  <html>
+  <head>
+    <title>Musicalia</title>
+  </head>
+  <body>
+    <h1>♫ Canciones</h1>
+    <h2>{% block subtitle %}{% endblock %}</h2>
+    {% block contents %}{% endblock %}
+  </body>
+  </html>
+  
+Analicemos las líneas más importantes:
+
+- **L6** → Este encabezado será común a toda la aplicación ``songs``.
+- **L7** → Se define un bloque "vacío" ``subtitle`` con la idea de que sea completado en plantillas derivadas.
+- **L8** → Se define un bloque "vacío" ``contents`` con la idea de que sea completado en plantillas derivadas.
+
+Extendiendo plantillas
+======================
+
+Ahora podemos modificar las plantillas previas para extender (heredar) desde esta plantilla base. Veamos los cambios aplicados.
+
+Empezamos con las modificaciones hechas a la :ref:`plantilla de lista <firststeps/templates:plantilla de lista>`:
+
+.. code-block:: htmldjango
+  :caption: :fa:`r:file-lines#green` ``songs/templates/songs/song/list.html``
+  :linenos:
+  :emphasize-lines: 1, 3, 5, 11
+
+  {% extends "songs/base.html" %}
+  
+  {% block subtitle %}Lista{% endblock %}
+  
+  {% block contents %}
+  <ul>
+    {% for song in songs %}
+      <li><a href="{% url 'songs:song_detail' song.pk %}">{{ song }}</a></li>
+    {% endfor %}
+  </ul>
+  {% endblock %}
+  
+Analicemos las líneas más importantes:
+
+- **L1** → Estamos usando la etiqueta de plantilla `extends`_ para indicar que heredamos (o extendemos) la plantilla ``songs/base.html``. [#template-tag]_
+- **L3** → Estamos sobreescribiendo o "rellenando" el bloque ``subtitle`` con el contenido propio de esta plantilla.
+- **L5** → Estamos sobreescribiendo o "rellenando" el bloque ``contents`` con el contenido propio de esta plantilla.
+
+.. tip::
+  El contenido del bloque se puede rellenar en la misma línea o en varias líneas. Es más una cuestión estética de organización del código.
+
+Podemos ver los cambios aplicados accediendo a http://localhost:8000/songs/:
+
+.. figure:: images/templates/song-list-with-inheritance.png
+    :align: center
+
+    Plantilla de lista de canciones con herencia
+
+Del mismo modo, vamos a modificar la :ref:`plantilla de detalle <firststeps/templates:plantilla de detalle>` para heredar desde la :ref:`plantilla base <firststeps/templates:plantilla base>`:
+
+.. code-block::
+  :caption: :fa:`r:file-lines#green` ``songs/templates/songs/song/detail.html``
+  :linenos:
+  :emphasize-lines: 1, 3, 5, 20
+
+  {% extends "songs/base.html" %}
+  
+  {% block subtitle %}{{ song.name }}{% endblock %}
+  
+  {% block contents %}
+  <table>
+    <tr>
+      <th>Nombre</th>
+      <td>{{ song.name }}</td>
+    </tr>
+    <tr>
+      <th>Cantante</th>
+      <td>{{ song.singer }}</td>
+    </tr>
+    <tr>
+      <th>Duración</th>
+      <td>{{ song.length }} minutos</td>
+    </tr>
+  </table>
+  {% endblock %}
+
+Analicemos las líneas más importantes:
+
+- **L1** → Estamos usando la etiqueta de plantilla `extends`_ para indicar que heredamos (o extendemos) la plantilla ``songs/base.html``. [#template-tag]_
+- **L3** → Estamos sobreescribiendo o "rellenando" el bloque ``subtitle`` con el contenido propio de esta plantilla. Nótese que podemos usar objetos del contexto dentro del bloque.
+- **L5** → Estamos sobreescribiendo o "rellenando" el bloque ``contents`` con el contenido propio de esta plantilla.
+
+Podemos ver los cambios aplicados accediendo a http://localhost:8000/songs/2/:
+
+.. figure:: images/templates/song-detail-with-inheritance.png
+    :align: center
+
+    Plantilla de detalle de canción con herencia
 
 
 
 .. _lenguaje de plantillas de Django: https://docs.djangoproject.com/en/dev/ref/templates/language/
 .. _etiquetas de plantilla predefinidas: https://docs.djangoproject.com/en/dev/ref/templates/builtins/#built-in-tag-reference
-
+.. _url: https://docs.djangoproject.com/en/dev/ref/templates/builtins/#url
+.. _herencia de plantillas: https://docs.djangoproject.com/en/dev/ref/templates/language/#template-inheritance
+.. _extends: https://docs.djangoproject.com/en/dev/ref/templates/builtins/#std-templatetag-extends
 
 
 .. [#template-loaders] Se considera una buena práctica que las plantillas vinculadas con una aplicación residan en dicha aplicación, pero hay `otras formas <https://docs.djangoproject.com/en/dev/topics/templates/#loaders>`_ de configurar los cargadores de plantillas en Django.
-
+.. [#template-tag] No todas las etiquetas de plantilla necesitan una etiqueta de cierre.
