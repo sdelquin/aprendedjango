@@ -1,0 +1,15 @@
+Campo,``blank=True``,``null=True``
+``BooleanField``,:fa:`check#green`,:fa:`check#green`
+``CharField``,:fa:`check#green`,:fa:`xmark#red` 
+``DateField``,:fa:`check#green`,:fa:`check#green`
+``DateTimeField``,:fa:`check#green`,:fa:`check#green`
+``DecimalField``,:fa:`check#green`,:fa:`check#green`
+``FileField``,:fa:`check#green`,:fa:`check#green`
+``FloatField``,:fa:`check#green`,:fa:`check#green`
+``ImageField``,:fa:`check#green`,:fa:`check#green`
+``IntegerField``,:fa:`check#green`,:fa:`check#green`
+``SlugField``,:fa:`check#green`,:fa:`xmark#red`
+``TextField``,:fa:`check#green`,:fa:`xmark#red`
+``TimeField``,:fa:`check#green`,:fa:`check#green`
+``URLField``,:fa:`check#green`,:fa:`xmark#red`
+``ForeignKey``,:fa:`check#green`,:fa:`check#green`

@@ -12,3 +12,6 @@ html:
 
 ideas:
     open ideas.pdf
+
+@req package:
+    pip freeze | grep -i {{ package }}

@@ -21,6 +21,7 @@ extensions = [
     'sphinxext.opengraph',
     'sphinx.ext.autosectionlabel',
     'sphinx_copybutton',
+    'sphinxnotes.strike',
 ]
 
 autosectionlabel_prefix_document = True
