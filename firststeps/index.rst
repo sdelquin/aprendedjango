@@ -2,15 +2,11 @@
 Primeros pasos con Django
 #########################
 
-*Djane* ya ha adquirido sus conocimientos teóricos y conceptuales sobre el mundo de la programación web. En este capítulo le toca afrontar la dura tarea de empezar a crear un proyecto Django. [#story-set]_
+Django es un framework de desarrollo web en Python que te ayuda a construir aplicaciones web de forma rápida y estructurada. Con Django, puedes crear páginas web dinámicas y potentes utilizando Python y sus numerosas características integradas. [#story-set]_
 
 .. image:: images/hero.svg
 
-********
-Sinopsis
-********
-
-En este capítulo se tratan los siguientes contenidos:
+En este capítulo se tratarán los siguientes contenidos:
 
 .. toctree::
    :maxdepth: 2
@@ -29,4 +25,4 @@ En este capítulo se tratan los siguientes contenidos:
 
 .. --------------- Hyperlinks ---------------
 
-.. _Storyset: https://storyset.com/leisure
+.. _Storyset: https://storyset.com/online

@@ -8,22 +8,22 @@ Un proyecto Django está formado por aplicaciones. En este contexto podemos ente
 Creando aplicaciones
 ********************
 
-Vamos a empezar por lo más obvio de nuestro proyecto que serían **las canciones**. Crearemos una aplicación ``songs``:
+Vamos a empezar por lo más obvio de nuestro proyecto que serían **las canciones**. Crearemos una aplicación ``tracks``:
 
 .. code-block:: console
 
-    $ python manage.py startapp songs
+    $ python manage.py startapp tracks
 
 .. tip::
     Suele ser habitual usar **nombres en plural** para las aplicaciones, pero obviamente depende del contexto y no es una regla fija.
 
-El comando anterior habrá creado una carpeta ``songs`` en la raíz de nuestro proyecto con el siguiente contenido:
+El comando anterior habrá creado una carpeta ``tracks`` en la raíz de nuestro proyecto con el siguiente contenido:
 
 .. code-block:: console
 
-    $ tree songs
+    $ tree tracks
 
-    songs
+    tracks
     ├── __init__.py
     ├── admin.py
     ├── apps.py
@@ -96,7 +96,7 @@ Estas aplicaciones están "preinstaladas" cuando creamos el proyecto y son propi
 :fa:`cube` `django.contrib.staticfiles`_
     Gestión de archivos estáticos.
 
-Por tanto, vamos a añadir nuestra aplicación ``songs`` a la lista ``INSTALLED_APPS`` en el fichero ``settings.py``:
+Por tanto, vamos a añadir nuestra aplicación ``tracks`` a la lista ``INSTALLED_APPS`` en el fichero ``settings.py``:
 
 .. code-block::
     :emphasize-lines: 8
@@ -108,10 +108,10 @@ Por tanto, vamos a añadir nuestra aplicación ``songs`` a la lista ``INSTALLED_
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
-        'songs.apps.SongsConfig',
+        'tracks.apps.TracksConfig',
     ]
 
-Cabría preguntarse por qué se añade la línea ``'songs.apps.SongsConfig'``. La clase ``SongsConfig`` que está dentro del módulo ``apps`` en la aplicación ``songs`` es donde reside la configuración global de la aplicación. [#install-app]_
+Cabría preguntarse por qué se añade la línea ``'tracks.apps.TracksConfig'``. La clase ``TracksConfig`` que está dentro del módulo ``apps`` en la aplicación ``tracks`` es donde reside la configuración global de la aplicación. [#install-app]_
 
 .. tip::
     Es una convención que si una aplicación se llama ``matraca`` entonces la clase de configuración se debería llamar ``MatracaConfig``.
@@ -119,7 +119,7 @@ Cabría preguntarse por qué se añade la línea ``'songs.apps.SongsConfig'``. L
 .. ================================================================================================================
 
 .. [#install-app]
-    Es posible "instalar" una aplicación únicamente por su nombre, en este caso añadiendo ``'songs'`` a ``INSTALLED_APPS`` pero en ese caso perderíamos la capacidad de `personalizar ciertos aspectos de la aplicación <https://stackoverflow.com/a/60770936>`_ mediante ``SongsConfig``.
+    Es posible "instalar" una aplicación únicamente por su nombre, en este caso añadiendo ``'tracks'`` a ``INSTALLED_APPS`` pero en ese caso perderíamos la capacidad de `personalizar ciertos aspectos de la aplicación <https://stackoverflow.com/a/60770936>`_ mediante ``TracksConfig``.
 
 .. _django.contrib.admin: https://docs.djangoproject.com/en/dev/ref/contrib/admin/#module-django.contrib.admin
 .. _django.contrib.auth: https://docs.djangoproject.com/en/dev/ref/contrib/auth/#django-contrib-auth

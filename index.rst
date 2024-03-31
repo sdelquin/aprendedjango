@@ -31,6 +31,7 @@ Aprende Django
 
    webdev/index
    firststeps/index
+   deepinto/index
 
 
 

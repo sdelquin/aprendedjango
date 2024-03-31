@@ -44,12 +44,12 @@ Creando URLs
 
 Vamos a empezar por el caso de uso en el que queremos listar todas las canciones que hay en el proyecto ``musicalia``. 
 
-Dado que estamos trabajando con la aplicación ``songs`` podríamos definir la url del listado de canciones en ``/songs/``
+Dado que estamos trabajando con la aplicación ``tracks`` podríamos definir la url del listado de canciones en ``/tracks/``
 
 Incluyendo URLs
 ===============
 
-Para empezar debemos indicar en las urls de primer nivel que todo aquello que empiece por ``/songs`` sea gestionado por la propia aplicación ``songs``:
+Para empezar debemos indicar en las urls de primer nivel que todo aquello que empiece por ``/tracks`` sea gestionado por la propia aplicación ``tracks``:
 
 .. code-block::
     :caption: :fa:`r:file-lines#green` ``musicalia/urls.py``
@@ -61,45 +61,45 @@ Para empezar debemos indicar en las urls de primer nivel que todo aquello que em
     
     urlpatterns = [
         path('admin/', admin.site.urls),
-        path('songs/', include('songs.urls')),
+        path('tracks/', include('tracks.urls')),
     ]
     
-Hemos añadido la **L6** que incluye las urls de la aplicación ``songs`` para aquellas rutas que estén bajo ``/songs``. Nótese que se ha usado la cadena de texto ``'songs.urls'`` en vez de importar directamente el módulo. Esto nos puede facilitar la creación de urls.
+Hemos añadido la **L6** que incluye las urls de la aplicación ``tracks`` para aquellas rutas que estén bajo ``/tracks``. Nótese que se ha usado la cadena de texto ``'tracks.urls'`` en vez de importar directamente el módulo. Esto nos puede facilitar la creación de urls.
 
 URLs de aplicación
 ==================
 
-Ahora ya estamos en disposición de crear las urls propias de la aplicación ``songs``.
+Ahora ya estamos en disposición de crear las urls propias de la aplicación ``tracks``.
 
 URL de listado
 --------------
 
-Empezaremos por crear una url en la aplicación ``songs`` de cara a mostrar un listado de todas las canciones.
+Empezaremos por crear una url en la aplicación ``tracks`` de cara a mostrar un listado de todas las canciones.
 
-Para ello debemos crear el fichero ``songs/urls.py``:
+Para ello debemos crear el fichero ``tracks/urls.py``:
 
 .. code-block::
-    :caption: :fa:`r:file-lines#green` ``songs/urls.py``
+    :caption: :fa:`r:file-lines#green` ``tracks/urls.py``
     :linenos:
 
     from django.urls import path
     
     from . import views
     
-    app_name = 'songs'
+    app_name = 'tracks'
 
-    urlpatters = [
-        path('', views.song_list, name='song_list'),
+    urlpatterns = [
+        path('', views.track_list, name='track_list'),
     ]
     
 Analicemos cada línea por separado:
 
-- **L3** → Importamos las **vistas** de la aplicación actual (``songs``).
-- **L5** → Definimos el **espacio de nombres** [#namespace]_ ``songs`` para las urls de esta aplicación. Django espera ver una variable llamada ``app_name`` con esta interpretación.
+- **L3** → Importamos las **vistas** de la aplicación actual (``tracks``).
+- **L5** → Definimos el **espacio de nombres** [#namespace]_ ``tracks`` para las urls de esta aplicación. Django espera ver una variable llamada ``app_name`` con esta interpretación.
 - **L6** → **Registramos** la url usando la función ``path()`` y pasando estos tres argumentos:
-    - ``''`` Es la url que queremos gestionar. Al ser cadena vacía indicamos que se trata del raíz ``/``. Pero ojo porque venimos de las urls de primer nivel. Por lo tanto en este caso estamos manejando la url ``/songs/``
-    - ``views.list_songs`` Es la vista que se lanzará si la url casa con el patrón indicado.
-    - ``'song_list'`` Es el nombre que le damos a esta url. Este argumento es muy importante ya que nos permite referenciar esta url sin tener que "hardcodear" la ruta. Dado que ya hemos dado un espacio de nombres, podemos hacer referencia a esta url con ``songs:song_list``.
+    - ``''`` Es la url que queremos gestionar. Al ser cadena vacía indicamos que se trata del raíz ``/``. Pero ojo porque venimos de las urls de primer nivel. Por lo tanto en este caso estamos manejando la url ``/tracks/``
+    - ``views.track_list`` Es la vista que se lanzará si la url casa con el patrón indicado.
+    - ``'track_list'`` Es el nombre que le damos a esta url. Este argumento es muy importante ya que nos permite referenciar esta url sin tener que "hardcodear" la ruta. Dado que ya hemos dado un espacio de nombres, podemos hacer referencia a esta url con ``tracks:track_list``.
 
 .. caution::
     A diferencia de otros ficheros, el archivo ``urls.py`` de cada aplicación **no se crea** cuando creamos una nueva aplicación Django.
@@ -110,7 +110,7 @@ URL de detalle
 Si damos un paso más podemos preparar una url en la que mostraremos el detalle de una canción en concreto:
 
 .. code-block::
-    :caption: :fa:`r:file-lines#green` ``songs/urls.py``
+    :caption: :fa:`r:file-lines#green` ``tracks/urls.py``
     :linenos:
     :emphasize-lines: 9
 
@@ -118,11 +118,11 @@ Si damos un paso más podemos preparar una url en la que mostraremos el detalle 
     
     from . import views
     
-    app_name = 'songs'
+    app_name = 'tracks'
 
-    urlpatters = [
-        path('', views.song_list, name='song_list'),
-        path('<pk>/', views.song_detail, name='song_detail'),
+    urlpatterns = [
+        path('', views.track_list, name='track_list'),
+        path('<pk>/', views.track_detail, name='track_detail'),
     ]
 
 En esta nueva línea introducida **L9** nos damos cuenta de la existencia de un "parámetro" en la url identificado por ``<pk>``. En este caso hace referencia a "primary key" (clave primaria) de la canción en cuestión.
@@ -138,14 +138,14 @@ En una url podemos hacer uso de ángulos ``<>`` lo que nos permite introducir pa
 En el caso de la *url de detalle* de cada canción vista anteriormente, podríamos haber incluido un conversor de ruta sobre la "primary key" de la canción [#primarykey]_:
 
 .. code-block::
-    :caption: :fa:`r:file-lines#green` ``songs/urls.py``
+    :caption: :fa:`r:file-lines#green` ``tracks/urls.py``
     :linenos:
     :lineno-start: 7
     :emphasize-lines: 3
 
-    urlpatters = [
+    urlpatterns = [
         ...
-        path('<int:pk>/', views.song_detail, name='song_detail'),
+        path('<int:pk>/', views.track_detail, name='track_detail'),
     ]
 
 Un **conversor de ruta** es una anotación en la que indicamos el tipo al que se debe convertir un determinado argumento de url cuando invocamos a la vista correspondiente. Adicionalmente permite establecer (y comprobar) el formato de entrada del citado argumento.
