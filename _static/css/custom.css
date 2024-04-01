@@ -32,12 +32,12 @@ div.related-pages {
   margin-bottom: 1rem;
 }
 
-/* Poner el caption de tablas debajo de ellas */
+/* Set caption below tables */
 table.docutils {
   caption-side: bottom;
 }
 
-/* Separar un poco el caption de la tabla */
+/* Gap between caption and table */
 table.docutils caption {
   margin-top: 0.5rem;
 }
@@ -46,9 +46,18 @@ table.docutils caption {
   text-decoration: line-through;
 }
 
-/* Color de los números de línea en bloques de código */
+/* Color for line numbers in code blocks */
 
 .highlight span.linenos {
   color: lightgray;
   box-shadow: -0.0625rem 0 lightgray inset;
+}
+
+/* Change color when selecting text */
+::selection {
+  background: #a8d1ff;
+}
+
+::-moz-selection {
+  background: #a8d1ff;
 }
