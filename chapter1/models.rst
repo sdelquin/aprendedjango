@@ -2,7 +2,7 @@
 Modelos
 #######
 
-Como hemos visto en las :ref:`características de Django <webdev/django:características>` hay un **ORM** que vincula tablas de la base de datos con objetos de Python.
+Como hemos visto en las :ref:`características de Django <chapter0/django:características>` hay un **ORM** que vincula tablas de la base de datos con objetos de Python.
 
 Un modelo es simplemente una clase de Python que hereda características definidas (en otras clases) del propio framework de Django.
 
@@ -123,7 +123,7 @@ Ya estamos en disposición de aplicar las migraciones generadas. Para ello usamo
     Running migrations:
       Applying tracks.0001_initial... OK
     
-En la salida podemos observar que se están **aplicando todas las migraciones**. Las aplicaciones que nos aparecen (``admin``, ``auth``, ``contenttypes``, ``sessions``) además de ``tracks`` están ahí porque vienen :ref:`preinstaladas <firststeps/apps:instalando aplicaciones>` al crear un proyecto Django.
+En la salida podemos observar que se están **aplicando todas las migraciones**. Las aplicaciones que nos aparecen (``admin``, ``auth``, ``contenttypes``, ``sessions``) además de ``tracks`` están ahí porque vienen :ref:`preinstaladas <chapter1/apps:instalando aplicaciones>` al crear un proyecto Django.
 
 .. hint::
     Si usamos ``python manage.py migrate tracks`` estaríamos aplicando las migraciones **únicamente** de la aplicación ``tracks``.
@@ -151,7 +151,7 @@ En esta configuración "por defecto" tenemos un motor de base de datos `sqlite`_
 Tablas de la base de datos
 ==========================
 
-Una vez aplicada :ref:`la migración <firststeps/models:creando migraciones>` de nuestro modelo ``Track`` podemos comprobar que se ha creado la tabla correspondiente en la base de datos. Para acceder a la base de datos lanzamos el siguiente comando:
+Una vez aplicada :ref:`la migración <chapter1/models:creando migraciones>` de nuestro modelo ``Track`` podemos comprobar que se ha creado la tabla correspondiente en la base de datos. Para acceder a la base de datos lanzamos el siguiente comando:
 
 .. code-block:: console
 
@@ -177,7 +177,7 @@ Más allá de ``auth_*`` y ``django_*`` que vienen de las aplicaciones preinstal
 .. note::
     La nomenclatura que usa Django en la base de datos para crear las tablas es: ``<nombre-de-aplicación>_<nombre-de-modelo>``.
 
-Si consultamos el esquema de la tabla ``tracks_track`` podemos comprobar que los atributos son los definidos en el :ref:`modelo <firststeps/models:creando modelos>`:
+Si consultamos el esquema de la tabla ``tracks_track`` podemos comprobar que los atributos son los definidos en el :ref:`modelo <chapter1/models:creando modelos>`:
 
 .. code-block:: sqlite3
     :emphasize-lines: 4-6
@@ -212,7 +212,7 @@ Aquí nos damos cuenta de un detalle: Aparece un campo "id" que no se especific�
 Interfaz administrativa
 ***********************
 
-Ya hemos visto anteriormente :ref:`cómo acceder a la interfaz administrativa <firststeps/setup:interfaz administrativa>` de Django. En este apartado veremos cómo "activar" los modelos personalizados para que los podamos gestionar desde la interfaz administrativa.
+Ya hemos visto anteriormente :ref:`cómo acceder a la interfaz administrativa <chapter1/setup:interfaz administrativa>` de Django. En este apartado veremos cómo "activar" los modelos personalizados para que los podamos gestionar desde la interfaz administrativa.
 
 Lo primero que debemos hacer es editar el fichero ``admin.py`` que se encuentra junto al de ``models.py`` y que, como su nombre indica, permite establecer los aspectos relacionados con la interfaz administrativa:
 
@@ -443,7 +443,7 @@ Hay que tener en cuenta que si lo que buscamos con un ``get()`` no existe, se la
 Clave primaria
 --------------
 
-Hemos visto anteriormente que Django añade un campo :ref:`id <firststeps/models:identificador de tabla>` como **clave primaria** del modelo (tabla) **si no se especifica otra clave primaria alternativa**.
+Hemos visto anteriormente que Django añade un campo :ref:`id <chapter1/models:identificador de tabla>` como **clave primaria** del modelo (tabla) **si no se especifica otra clave primaria alternativa**.
 
 Para "independizar" la clave primaria del campo ``id`` o de cualquier otro que especifique el usuario, Django proporciona el atributo ``pk``. Veamos su comportamiento:
 

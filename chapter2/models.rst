@@ -2,7 +2,7 @@
 Modelos
 #######
 
-Ya hemos visto los :ref:`tipos de campos "básicos" <firststeps/models:tipos de campos>` para un modelo de Django. Ahora profundizaremos un poco más sobre esto descubriendo nuevas posibilidades.
+Ya hemos visto los :ref:`tipos de campos "básicos" <chapter1/models:tipos de campos>` para un modelo de Django. Ahora profundizaremos un poco más sobre esto descubriendo nuevas posibilidades.
 
 *************
 Claves ajenas
@@ -19,7 +19,7 @@ Para poder generar una relación necesitamos, al menos, dos modelos. Hasta el mo
 
 Parece que tiene sentido normalizar [#normalizar]_ la base de datos y crear un modelo ``Artist`` que almacene la información propia del cantante/grupo/banda (concepto "artista" en general).
 
-Para ello vamos a :ref:`crear una nueva aplicación <firststeps/apps:creando aplicaciones>` llamada ``artists``:
+Para ello vamos a :ref:`crear una nueva aplicación <chapter1/apps:creando aplicaciones>` llamada ``artists``:
 
 .. code-block:: console
 
@@ -268,7 +268,7 @@ Ahora que ya tenemos todo arreglado y cargadas nuevas canciones, vamos a hacer a
     >>> queen.tracks.all()
     <QuerySet [<Track: Bohemian Rhapsody>, <Track: Somebody to love>]>
 
-El atributo ``tracks`` que aparece ahora en los artistas es el ``related_name`` que se ha definido en la :ref:`clave ajena <deepinto/models:creando claves ajenas>` y permite obtener todos los objetos relacionados (en este caso canciones).
+El atributo ``tracks`` que aparece ahora en los artistas es el ``related_name`` que se ha definido en la :ref:`clave ajena <chapter2/models:creando claves ajenas>` y permite obtener todos los objetos relacionados (en este caso canciones).
 
 Por supuesto el objecto ``tracks`` permite aplicarle nuevos filtros::
 

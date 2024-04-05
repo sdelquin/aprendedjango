@@ -12,7 +12,7 @@ Un fichero de *URLs* no es más que un fichero Python que incluye un listado de 
 URLs de primer nivel
 ********************
 
-Ya hemos visto que, cuando :ref:`se crea un proyecto Django <firststeps/setup:creación del proyecto>`, también se crean varios ficheros entre los que se encuentra un fichero ``urls.py``.
+Ya hemos visto que, cuando :ref:`se crea un proyecto Django <chapter1/setup:creación del proyecto>`, también se crean varios ficheros entre los que se encuentra un fichero ``urls.py``.
 
 Veamos su contenido:
 
@@ -36,7 +36,7 @@ Analicemos cada línea por separado:
 - **L4** → Django espera encontrar en este fichero una variable con el nombre `urlpatterns`_. Esta variable es una lista con las rutas.
 - **L5** → Se usa la función `path()`_ para vincular la ruta con su url. En este caso concreto lo que se está haciendo es delegar las *urls* que "cuelgan" de ``admin/`` al fichero ``urls.py`` dentro del módulo administrativo de Django ``admin.site``.
 
-Gracias a este fichero (que viene por defecto) podemos acceder a la :ref:`interfaz administrativa <firststeps/setup:interfaz administrativa>` de Django en la url ``/admin``.
+Gracias a este fichero (que viene por defecto) podemos acceder a la :ref:`interfaz administrativa <chapter1/setup:interfaz administrativa>` de Django en la url ``/admin``.
 
 ************
 Creando URLs

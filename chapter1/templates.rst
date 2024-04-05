@@ -113,7 +113,7 @@ Si ahora accedemos a http://localhost:8000/track/1/ veremos el detalle de la can
 Enlazando plantillas
 ********************
 
-Sería muy útil poder enlazar cada una de las canciones en el listado inicial con su correspondiente detalle. Para ello vamos a modificar la :ref:`plantilla de lista <firststeps/templates:plantilla de lista>` añadiendo el vínculo correspondiente.
+Sería muy útil poder enlazar cada una de las canciones en el listado inicial con su correspondiente detalle. Para ello vamos a modificar la :ref:`plantilla de lista <chapter1/templates:plantilla de lista>` añadiendo el vínculo correspondiente.
 
 Una primera aproximación sería la siguiente:
 
@@ -194,7 +194,7 @@ Extendiendo plantillas
 
 Ahora podemos modificar las plantillas previas para extender (heredar) desde esta plantilla base. Veamos los cambios aplicados.
 
-Empezamos con las modificaciones hechas a la :ref:`plantilla de lista <firststeps/templates:plantilla de lista>`:
+Empezamos con las modificaciones hechas a la :ref:`plantilla de lista <chapter1/templates:plantilla de lista>`:
 
 .. code-block:: htmldjango
   :caption: :fa:`r:file-lines#green` ``tracks/templates/tracks/track/list.html``
@@ -229,7 +229,7 @@ Podemos ver los cambios aplicados accediendo a http://localhost:8000/tracks/:
 
     Plantilla de lista de canciones con herencia
 
-Del mismo modo, vamos a modificar la :ref:`plantilla de detalle <firststeps/templates:plantilla de detalle>` para heredar desde la :ref:`plantilla base <firststeps/templates:plantilla base>`:
+Del mismo modo, vamos a modificar la :ref:`plantilla de detalle <chapter1/templates:plantilla de detalle>` para heredar desde la :ref:`plantilla base <chapter1/templates:plantilla base>`:
 
 .. code-block::
   :caption: :fa:`r:file-lines#green` ``tracks/templates/tracks/track/detail.html``

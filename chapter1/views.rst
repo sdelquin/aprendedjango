@@ -58,7 +58,7 @@ La siguiente vista que vamos a escribir es aquella que se encarga de mostrar el 
 
 Analicemos cada línea por separado:
 
-- **L12** → La función no sólo recibe la petición "http" sino la clave primaria de la canción ``pk`` que queremos manejar. Es de tipo entero porque hemos aplicado un :ref:`conversor de ruta <firststeps/urls:conversores de rutas>` en la url.
+- **L12** → La función no sólo recibe la petición "http" sino la clave primaria de la canción ``pk`` que queremos manejar. Es de tipo entero porque hemos aplicado un :ref:`conversor de ruta <chapter1/urls:conversores de rutas>` en la url.
 - **L13** → Obtenemos la canción concreta que nos interesa.
 - **L14** → Utilizamos la función ``render()`` pasando en el contexto la canción que hemos obtenido previamente.
 
