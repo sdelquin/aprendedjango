@@ -205,6 +205,79 @@ Las opciones disponibles para `on_delete`_ son las siguientes:
 :fa:`gear#brown` ``models.DO_NOTHING``:
     No hace nada. Si la base de datos requiere integridad referencial [#integridad-referencial]_ entonces esto provocará una excepción de tipo ``IntegrityError``.
 
+Manejando el ORM
+================
+
+Ahora que ya hemos creado nuestra primera clave ajena, veamos cómo manejar los objetos vinculados a través del ORM de Django.
+
+Asignando claves ajenas
+-----------------------
+
+Lo primero que debemos hacer es "arreglar" la asignación de todas las canciones al mismo grupo. Al asignar 1 en la migración como valor para el campo ``artist`` todas las canciones están vinculadas con el artista *Oasis*:
+
+.. code-block::
+    :emphasize-lines: 7
+
+    >>> from tracks.models import Track
+
+    >>> for track in Track.objects.all():
+    ...     print(f'{track} → {track.artist}')
+    ...
+    Wonderwall → Oasis
+    Bohemian Rhapsody → Oasis
+
+Tendremos que localizar la canción *Bohemiam Rhapsody* y asignarle su artista correcto que es *Queen*:
+
+.. code-block::
+
+    >>> from artists.models import Artist
+    >>> from tracks.models import Track
+
+    >>> queen = Artist.objects.get(name='Queen')
+    >>> borhap = Track.objects.get(name='Bohemian Rhapsody')
+
+    >>> borhap.artist = queen
+    >>> borhap.save()
+
+    >>> borhap.artist
+    <Artist: Queen>
+
+Para disponer de más información, vamos a añadir una nueva canción a cada uno de los grupos (artistas)::
+
+    >>> queen = Artist.objects.get(name='Queen')
+    >>> oasis = Artist.objects.get(name='Oasis')
+
+    >>> Track.objects.create(name='Live Forever', artist=oasis, length=276)
+    <Track: Live Forever>
+    >>> Track.objects.create(name='Somebody to love', artist=queen, length=296)
+    <Track: Somebody to love>
+
+Consultando relaciones
+----------------------
+
+Ahora que ya tenemos todo arreglado y cargadas nuevas canciones, vamos a hacer algunas consultas aprovechando las relaciones de claves ajenas:
+
+.. code-block::
+    :emphasize-lines: 2,6
+
+    >>> oasis = Artist.objects.get(name='Oasis')
+    >>> oasis.tracks.all()
+    <QuerySet [<Track: Wonderwall>, <Track: Live Forever>]>
+
+    >>> queen = Artist.objects.get(name='Queen')
+    >>> queen.tracks.all()
+    <QuerySet [<Track: Bohemian Rhapsody>, <Track: Somebody to love>]>
+
+El atributo ``tracks`` que aparece ahora en los artistas es el ``related_name`` que se ha definido en la :ref:`clave ajena <deepinto/models:creando claves ajenas>` y permite obtener todos los objetos relacionados (en este caso canciones).
+
+Por supuesto el objecto ``tracks`` permite aplicarle nuevos filtros::
+
+    >>> oasis.tracks.filter(length__lt=260)
+    <QuerySet [<Track: Wonderwall>]>
+
+    >>> queen.tracks.filter(length__lt=260)
+    <QuerySet []>
+
 *************
 Valores nulos
 *************
