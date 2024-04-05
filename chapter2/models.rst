@@ -134,7 +134,7 @@ Analicemos las líneas más importantes:
 - **L6** → Ahora el campo ``artist`` se convierte en una clave ajena usando el campo ``models.ForeignKey``.
 - **L7** → El primer parámetro siempre será el modelo al que hace referencia la clave ajena. Es muy habitual usar una cadena de texto con notación ``'<app>.<Model>'``.
 - **L8** → El segundo parámetro requerido es ``on_delete`` en el que debemos especificar el comportamiento a seguir cuando se borra un objeto de referencia. En este caso hemos indicado borrado en cascada.
-- **L9** → El parámetro ``related_name`` es muy interesante ya que nos permite dar un nombre a la relación "inversa" entre el objeto de referencia y el objeto relacionado.
+- **L9** → El parámetro `related_name`_ es muy interesante ya que nos permite dar un nombre a la relación "inversa" entre el objeto de referencia y el objeto relacionado.
 
 A continuación **creamos las migraciones** para estos últimos cambios realizados. Veamos qué ocurre:
 
@@ -255,18 +255,33 @@ Para disponer de más información, vamos a añadir una nueva canción a cada un
 Consultando relaciones
 ----------------------
 
-Ahora que ya tenemos todo arreglado y cargadas nuevas canciones, vamos a hacer algunas consultas aprovechando las relaciones de claves ajenas:
+Ahora que ya tenemos todo arreglado y cargadas nuevas canciones, vamos a hacer algunas consultas aprovechando las relaciones de claves ajenas.
 
-.. code-block::
-    :emphasize-lines: 2,6
+Supongamos un primer caso de uso en el que queremos obtener **todas las canciones** del artista *Oasis*. Veamos tres formas de implementar la solución:
 
-    >>> oasis = Artist.objects.get(name='Oasis')
-    >>> oasis.tracks.all()
-    <QuerySet [<Track: Wonderwall>, <Track: Live Forever>]>
+Usando la clave ajena directamente:
+    .. code-block::
 
-    >>> queen = Artist.objects.get(name='Queen')
-    >>> queen.tracks.all()
-    <QuerySet [<Track: Bohemian Rhapsody>, <Track: Somebody to love>]>
+        >>> oasis
+        <Artist: Oasis>
+
+        >>> Track.objects.filter(artist=oasis)
+        <QuerySet [<Track: Wonderwall>, <Track: Live Forever>]>
+    
+Usando un atributo de la clave ajena:
+    .. code-block::
+
+        >>> Track.objects.filter(artist__name='Oasis')
+        <QuerySet [<Track: Wonderwall>, <Track: Live Forever>]>
+
+Usando la relación inversa de la clave ajena:
+    .. code-block::
+
+        >>> oasis
+        <Artist: Oasis>
+
+        >>> oasis.tracks.all()
+        <QuerySet [<Track: Wonderwall>, <Track: Live Forever>]>
 
 El atributo ``tracks`` que aparece ahora en los artistas es el ``related_name`` que se ha definido en la :ref:`clave ajena <chapter2/models:creando claves ajenas>` y permite obtener todos los objetos relacionados (en este caso canciones).
 
@@ -396,10 +411,68 @@ Ahora creamos la migración y la aplicamos:
 .. caution::
     A diferencia de lo ocurrido cuando agregamos el campo ``artist`` como clave ajena, en este caso la migración no ha dado ningún problema, a pesar de que el campo ``num_visits`` no admite valores nulos. Esto se debe a que tiene un valor por defecto, y en el supuesto caso de que ya existieran filas en la tabla, se rellenarían con dicho valor por defecto.
 
+**************
+Clave primaria
+**************
+
+Django nos permite definir nuestra **propia clave primaria** si es que no queremos usar la que :ref:`se genera por defecto <chapter1/models:clave primaria>`.
+
+Para ello debemos usar el parámetro `primary_key`_ sobre el campo que queramos convertir en clave primaria. **Suponiendo** que el *nombre del artista* fuera único en el universo de la música, podríamos hacerlo clave primaria de la siguiente manera:
+
+.. code-block::
+    :caption: :fa:`r:file-lines#green` ``artists/models.py``
+    :linenos:
+    :emphasize-lines: 5
+
+    from django.db import models
     
+    
+    class Artist(models.Model):
+        name = models.CharField(primary_key=True, max_length=256)
+        starting_year = models.PositiveSmallIntegerField()
+        website = models.URLField(blank=True)
+    
+        def __str__(self):
+            return self.name
+    
+Nótese que en la **L5** hemos añadido la especificación de clave primaria. Con esta modificación ``name`` se convertirá en la nueva clave primaria de la tabla y el campo ``id`` será eliminado de la misma.
+
+Claves candidatas
+=================
+
+Una **clave candidata** en una base de datos es un conjunto de uno o más atributos que pueden identificar de forma única una fila en una tabla, pero aún no han sido designados como clave primaria.
+
+Django ofrece la posibilidad de que los valores que toma un campo sean **únicos**. Por tanto, dicho campo se convertirá en una clave candidata.
+
+Para ello usaremos el parámetro `unique`_ en la especificación del campo en cuestión. Siguiendo el mismo ejemplo que en el caso anterior podríamos **suponer** que el nombre del artista debe ser único:
+
+.. code-block::
+    :caption: :fa:`r:file-lines#green` ``artists/models.py``
+    :linenos:
+    :emphasize-lines: 5
+
+    from django.db import models
+    
+    
+    class Artist(models.Model):
+        name = models.CharField(unique=True, max_length=256)
+        starting_year = models.PositiveSmallIntegerField()
+        website = models.URLField(blank=True)
+    
+        def __str__(self):
+            return self.name
+
+Nótese que en la **L5** hemos añadido la especificación de valores únicos. Con esta modificación ``name`` se convertirá en una clave candidata de la tabla pero el campo ``id`` seguirá estando en la tabla como clave primaria.
+
+
+
+    
+.. _related_name: https://docs.djangoproject.com/en/dev/ref/models/fields/#django.db.models.ForeignKey.related_name
 .. _ForeignKey: https://docs.djangoproject.com/en/dev/ref/models/fields/#django.db.models.ForeignKey
 .. _on_delete: https://docs.djangoproject.com/en/dev/ref/models/fields/#django.db.models.ForeignKey.on_delete
 .. _PositiveBigIntegerField: https://docs.djangoproject.com/en/dev/ref/models/fields/#positivebigintegerfield
+.. _primary_key: https://docs.djangoproject.com/en/dev/ref/models/fields/#django.db.models.Field.primary_key
+.. _unique: https://docs.djangoproject.com/en/dev/ref/models/fields/#unique
 
 
 .. [#normalizar] "Normalizar" una base de datos se refiere al proceso de organizar la estructura de la base de datos para reducir la redundancia de datos y mejorar la integridad y eficiencia.
