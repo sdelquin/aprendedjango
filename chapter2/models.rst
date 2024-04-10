@@ -435,7 +435,10 @@ Para ello debemos usar el parámetro `primary_key`_ sobre el campo que queramos 
         def __str__(self):
             return self.name
     
-Nótese que en la **L5** hemos añadido la especificación de clave primaria. Con esta modificación ``name`` se convertirá en la nueva clave primaria de la tabla y el campo ``id`` será eliminado de la misma.
+Nótese que en la **L5** hemos añadido la especificación de clave primaria. Con esta modificación ``name`` se convertirá en la nueva clave primaria de la tabla.
+
+.. attention::
+    Aunque otra clave se convierta en clave primaria, Django **no elimina** automáticamente el campo ``id`` de la tabla. Si es eso lo que se quiere, se tendrá que hacer "manualmente".
 
 Claves candidatas
 =================
@@ -464,6 +467,166 @@ Para ello usaremos el parámetro `unique`_ en la especificación del campo en cu
 
 Nótese que en la **L5** hemos añadido la especificación de valores únicos. Con esta modificación ``name`` se convertirá en una clave candidata de la tabla pero el campo ``id`` seguirá estando en la tabla como clave primaria.
 
+********************
+Conjunto de opciones
+********************
+
+Hay ocasiones en las que nos interesa que un determinado campo de **tipo texto** tome únicamente valores sobre un `conjunto definido de opciones`_.
+
+Aunque hoy en día toda la música se considera global, imaginemos que queremos almacenar en nuestra base de datos el **ámbito de los artistas**. Este ámbito puede ser de 3 tipos:
+
+- Local
+- Nacional
+- Internacional
+
+Ahora vamos a trasladar este comportamiento a nuestro modelo ``Artist``:
+
+.. code-block::
+    :caption: :fa:`r:file-lines#green` ``artists/models.py``
+    :emphasize-lines: 5-12, 17-21
+    :linenos:
+
+    from django.db import models
+    
+    
+    class Artist(models.Model):
+        LOCAL = 'L'
+        NATIONAL = 'N'
+        INTERNATIONAL = 'I'
+        SCOPE_CHOICES = {
+            LOCAL: 'Local',
+            NATIONAL: 'Nacional',
+            INTERNATIONAL: 'Internacional',
+        }
+    
+        name = models.CharField(max_length=256)
+        starting_year = models.PositiveSmallIntegerField()
+        website = models.URLField(blank=True)
+        scope = models.CharField(
+            max_length=1,
+            choices=SCOPE_CHOICES,
+            default=INTERNATIONAL,
+        )
+    
+        def __str__(self):
+            return self.name
+
+Analicemos cada línea por separado:
+
+- **L5-L7** → Definimos las posibles opciones como **constantes de clase** asignándoles un *número fijo de caracteres*. [#fixed-chars]_
+- **L8-L12** → Introducimos un diccionario (también como constante de clase) en la que se define el "nombre" que va a tener cada opción.
+- **L17** → Usaremos siempre un campo de tipo ``CharField`` para este tipo de escenarios.
+- **L18** → Indicamos un tamaño máximo de 1 caracter. Esto se debe a que hemos asignado cadenas de texto de tamaño 1 a las opciones (véase L5-L7).
+- **L19** → El parámetro ``choices`` es el que nos permite indicar las posibles opciones que puede tomar este campo.
+- **L20** → Establecemos el ámbito internacional como valor por defecto para este campo.
+
+Tipos enumerados
+================
+
+Django proporciona `tipos enumerados`_ como alternativa para añadir un campo que toma una serie de opciones concretas.
+
+Veamos cómo sería la implementación:
+
+.. code-block::
+    :caption: :fa:`r:file-lines#green` ``artists/models.py``
+    :linenos:
+    :emphasize-lines: 5-8, 13-17
+
+    from django.db import models
+    
+    
+    class Artist(models.Model):
+        class Scope(models.TextChoices):
+            LOCAL = 'L', 'Local'
+            NATIONAL = 'N', 'Nacional'
+            INTERNATIONAL = 'I', 'Internacional'
+    
+        name = models.CharField(max_length=256)
+        starting_year = models.PositiveSmallIntegerField()
+        website = models.URLField(blank=True)
+        scope = models.CharField(
+            max_length=1,
+            choices=Scope,
+            default=Scope.INTERNATIONAL,
+        )
+    
+        def __str__(self):
+            return self.name
+    
+Analicemos cada línea por separado:
+
+- **L5** → Definimos una clase que contendrá las opciones. Esta clase hereda de ``models.TextChoices``.
+- **L6-L8** → Se añaden los atributos de clase con las opciones disponibles. Cada atributo viene definido por una tupla donde el primer elemento es el *identificador* y el segundo elemento es la *etiqueta*.
+- **L13-L17** → La especificación del campo como ``CharField`` es igual que en el caso anterior pero usando la clase "enumerada" que hemos creado en L5.
+
+Vamos a crear la migración correspondiente y a aplicarla:
+
+.. code-block:: console
+
+    $ python manage.py makemigrations artists
+    Migrations for 'artists':
+      artists/migrations/0003_artist_scope.py
+        - Add field scope to artist
+    
+    $ python manage.py migrate artists
+    Operations to perform:
+      Apply all migrations: artists
+    Running migrations:
+      Applying artists.0003_artist_scope... OK
+
+Acceso a atributos
+------------------
+
+Lo primero que vamos a hacer es **obtener el valor del ámbito** para un artista:
+
+.. code-block::
+    :linenos:
+
+    >>> from artists.models import Artist
+
+    >>> oasis = Artist.objects.get(name='Oasis')
+
+    >>> oasis.scope
+    'I'
+
+    >>> oasis.get_scope_display()
+    'Internacional'
+
+Analicemos las líneas más importantes:
+
+- **L5** → Obtenemos el atributo como cualquier otro. En este caso nos devuelve la representación como "cadena de texto".
+- **L8** → Django genera un método ``get_<attr>_display()`` con el que podemos obtener la etiqueta asignada al valor.
+
+Ahora vamos a crear un nuevo artista y **asignar un ámbito local**:
+
+.. code-block::
+    :linenos:
+
+    >>> pepe = Artist(name='Pepe Benavente', starting_year=1970)
+
+    >>> pepe.scope = Artist.Scope.LOCAL
+    >>> pepe.save()
+
+    >>> pepe.get_scope_display()
+    'Local'
+
+Analicemos las líneas más importantes:
+
+- **L3** → Asignamos el ámbito a través del atributo de la clase interior que hemos creado.
+- **L6** → Comprobamos la etiqueta del valor asignado.
+
+Es posible acceder a las **opciones definidas** en el propio tipo enumerado de la siguiente manera::
+
+    >>> Artist.Scope.choices
+    [('L', 'Local'), ('N', 'Nacional'), ('I', 'Internacional')]
+
+También podemos acceder tanto al **nombre** como a la **etiqueta** de una opción concreta::
+
+    >>> Artist.Scope.NATIONAL.name
+    'NATIONAL'
+    >>> Artist.Scope.NATIONAL.label
+    'Nacional'
+
 
 
     
@@ -473,8 +636,11 @@ Nótese que en la **L5** hemos añadido la especificación de valores únicos. C
 .. _PositiveBigIntegerField: https://docs.djangoproject.com/en/dev/ref/models/fields/#positivebigintegerfield
 .. _primary_key: https://docs.djangoproject.com/en/dev/ref/models/fields/#django.db.models.Field.primary_key
 .. _unique: https://docs.djangoproject.com/en/dev/ref/models/fields/#unique
+.. _conjunto definido de opciones: https://docs.djangoproject.com/en/dev/ref/models/fields/#choices
+.. _tipos enumerados: https://docs.djangoproject.com/en/dev/ref/models/fields/#enumeration-types
 
 
 .. [#normalizar] "Normalizar" una base de datos se refiere al proceso de organizar la estructura de la base de datos para reducir la redundancia de datos y mejorar la integridad y eficiencia.
 .. [#n-n] Sería muy razonable que la relación entre artista y canción fuera de N:N indicando que una canción puede ser cantada por múltiples artistas. En este momento nos quedaremos en un esquema más simple 1:N.
 .. [#integridad-referencial] La integridad referencial en una base de datos implica que la clave externa de una tabla de referencia siempre debe aludir a una fila válida de la tabla a la que se haga referencia.
+.. [#fixed-chars] No es obligatorio asignar un número fijo de caracteres, pero suele ser útil a la hora de definir el máximo tamaño del campo.
