@@ -1,7 +1,7 @@
-runserver port='9000':
+runserver port='8000':
     sphinx-autobuild --port {{ port }} . _build/html
 
-cleanrun port='9000': clean
+cleanrun port='8000': clean
     just runserver {{ port }}
 
 clean:
@@ -12,6 +12,3 @@ html:
 
 ideas:
     open ideas.pdf
-
-@req package:
-    pip freeze | grep -i {{ package }}
