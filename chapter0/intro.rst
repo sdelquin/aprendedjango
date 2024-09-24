@@ -104,9 +104,9 @@ Hoy en día existen aplicaciones web para multitud de tareas como procesadores d
     :header-rows: 1
     :class: longtable
 
-****************************
-Lugar de ejecución de código
-****************************
+*****************************
+Lugar de ejecución del código
+*****************************
 
 Cuando el navegador solicita a un servidor web una página, **es posible que antes de enviársela haya tenido que ejecutar, por sí mismo o por delegación, algún programa para obtenerla**. Ese programa es el que genera, en parte o en su totalidad, la página web que llega al cliente. En estos casos, **el código se ejecuta en el entorno del servidor web** y hablamos de **SERVER SIDE RENDERING (SSR)**:
 
@@ -115,15 +115,15 @@ Cuando el navegador solicita a un servidor web una página, **es posible que ant
 
     Server Side Rendering [#ssr-csr]_
 
-Además, cuando una página web llega al navegador, es también posible que incluya algún programa o fragmentos de código que se deban ejecutar en el cliente. Ese código, normalmente en **lenguaje JavaScript, se ejecutará en el navegador** y, además de poder modificar el contenido de la página, también puede llevar a cabo acciones como la animación de textos u objetos de la página o la comprobación de los datos que introduces en un formulario.
+Además, cuando una página web llega al navegador, es también posible que incluya algún programa o fragmentos de código que se deban ejecutar en el cliente. Ese código, normalmente en **lenguaje JavaScript, se ejecutará en el navegador** y, además de poder modificar el contenido de la página, puede llevar a cabo acciones como la animación de textos u objetos de la página o la comprobación de los datos que se introducen en un formulario.
 
 **Estas dos tecnologías se complementan una con la otra**. Así, volviendo al ejemplo del correo web, el programa que se encarga de obtener tus mensajes y su contenido de una base de datos se ejecuta en el entorno del servidor, mientras que tu navegador ejecuta, por ejemplo, el código encargado de avisarte cuando quieres enviar un mensaje y te has olvidado de poner un texto en el asunto.
 
-Esta división es así porque **el código que se ejecuta en el cliente** web (en el navegador) no tiene, o mejor dicho **tradicionalmente no tenía, acceso a los datos que se almacenan en el servidor**. Es decir, cuando en tu navegador querías leer un nuevo correo, el código Javascript que se ejecutaba en el mismo no podía obtener de la base de datos el contenido de ese mensaje. La solución era crear una nueva página en el servidor con la información que se pedía y enviarla de nuevo al navegador.
+Esta división es así porque **el código que se ejecuta en el cliente** web (navegador) no tiene, o mejor dicho **tradicionalmente no tenía, acceso a los datos que se almacenan en el servidor**. Es decir, cuando en tu navegador querías leer un nuevo correo, el código Javascript que se ejecutaba en el mismo no podía obtener de la base de datos el contenido de ese mensaje. La solución era crear una nueva página en el servidor con la información que se pedía y enviarla de nuevo al navegador.
 
 Sin embargo, es posible realizar programas en los que el código JavaScript que se ejecuta en el navegador pueda comunicarse con un servidor de Internet para obtener información con la que, por ejemplo, modificar la página web actual.
 
-En nuestro ejemplo, cuando pulsas con el ratón encima de un correo que quieres leer, la página puede contener código Javascript que detecte la acción y, en ese instante, consultar a través de Internet el texto que contiene ese mismo correo y mostrarlo en la misma página, modificando su estructura en caso de que sea necesario. Es decir, sin salir de una página poder modificar su contenido en base a la información que se almacena en un servidor de Internet. En este escenario podemos hablar de **SPA (Single Page Applications)** o aplicaciones de una única página, algo muy relacionado con el llamado **CLIENT SIDE RENDERING (CSR)**:
+En nuestro ejemplo, cuando pulsas con el ratón encima de un correo que quieres leer, la página puede contener código Javascript que detecte la acción y, en ese instante, consultar a través de Internet el texto que contiene ese mismo correo y mostrarlo en la misma página, modificando su estructura en caso de que sea necesario. Es decir, sin salir de una página podemos modificar su contenido en base a la información que se almacena en un servidor de Internet. En este escenario podemos hablar de **SPA (Single Page Applications)** o aplicaciones de una única página, concepto estrechamente relcionado con el llamado **CLIENT SIDE RENDERING (CSR)**:
 
 .. figure:: images/webdev/client-side-rendering.png
     :align: center
@@ -135,7 +135,7 @@ Front vs Back
 
 Es muy habitual hablar de desarrollo "frontend" cuando nos referimos a la programación de aplicaciones web del lado del cliente y desarrollo "backend" cuando nos referimos a la programación de aplicaciones web del lado del servidor.
 
-**Muchas de las aplicaciones web actuales utilizan estas dos tecnologías**: la ejecución de código en el servidor y en el cliente. Así, el código que se ejecuta en el servidor genera páginas web que ya incluyen código destinado a su ejecución en el navegador. Aquellas personas que se dedican al desarrollo de una aplicación en toda su extensión ("frontend" + "backend") se dice que trabajan en **desarrollo fullstack**.
+**Muchas de las aplicaciones web actuales utilizan ambas tecnologías**: la ejecución de código en el servidor y en el cliente. Así, el código que se ejecuta en el servidor genera páginas web que ya incluyen código destinado a su ejecución en el navegador. Aquellas personas que se dedican al desarrollo de una aplicación en toda su extensión ("frontend" + "backend") se dice que trabajan en **desarrollo fullstack**.
 
 .. figure:: images/webdev/frontend-backend.svg
     :align: center
