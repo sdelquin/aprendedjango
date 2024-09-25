@@ -57,9 +57,9 @@ En contraposición a las páginas web estáticas existen las **páginas web din�
 
 Dentro de las **páginas web dinámicas**, es muy importante distinguir **dos tipos**:
 
-1. Aquellas que **incluyen código que ejecuta el navegador**. En estas páginas el código ejecutable, normalmente en lenguaje **JavaScript**, se incluye dentro del HTML y se descarga junto con la página. Cuando el navegador muestra la página en pantalla, ejecuta el código que la acompaña. Este código puede incorporar múltiples funcionalidades que pueden ir desde mostrar animaciones hasta cambiar totalmente la apariencia y el contenido de la página.
+1. Aquellas cuyo contenido se "conforma" **completamente** de forma dinámica en el servidor y se devuelven al cliente. Puede que tengan extensión ``.php``, ``.asp`` o que incluso ni siquiera tengan extensión ``/shop``. El código HTML de estas páginas es el resultado de la ejecución de un programa (en el servidor). Estas páginas entran dentro de la categoría **SSR** que veremos :ref:`un poco más adelante <chapter0/intro:lugar de ejecución del código>`.
 
-2. Sin embargo hay muchas páginas en Internet que no tienen extensión .html. Puede que tengan extensión .php o .asp o que incluso ni siquiera tengan extensión. En éstas, el contenido que se descarga al navegador es similar al de una página web estática. Lo que cambia es la forma en que se obtiene ese contenido. Al contrario de lo que vimos hasta ahora, esas páginas no están almacenadas en el servidor; más concretamente, el contenido que se almacena no es el mismo que después se envía al navegador. **El HTML de estas páginas se forma como resultado de la ejecución de un programa**, y esa ejecución tiene lugar en el servidor web.
+2. Aquellas que **incluyen código que ejecuta el navegador**. En estas páginas el código ejecutable, normalmente en lenguaje JavaScript, se incluye dentro del HTML y se descarga junto con la página. Cuando el navegador muestra la página en pantalla, ejecuta el código que la acompaña. Este código puede incorporar múltiples funcionalidades que pueden ir desde mostrar animaciones hasta cambiar totalmente la apariencia y el contenido de la página. Estas páginas entran dentro de la categoría **CSR** que veremos :ref:`un poco más adelante <chapter0/intro:lugar de ejecución del código>`.
 
 El esquema de funcionamiento de una página web dinámica es el siguiente:
 
@@ -133,7 +133,9 @@ En nuestro ejemplo, cuando pulsas con el ratón encima de un correo que quieres 
 Front vs Back
 =============
 
-Es muy habitual hablar de desarrollo "frontend" cuando nos referimos a la programación de aplicaciones web del lado del cliente y desarrollo "backend" cuando nos referimos a la programación de aplicaciones web del lado del servidor.
+Es muy habitual hablar de **desarrollo "frontend"** cuando nos referimos a la programación de aplicaciones web del lado del cliente y **desarrollo "backend"** cuando nos referimos a la programación de aplicaciones web del lado del servidor.
+
+Podríamos decir que el desarrollo "frontend" está más vinculado con "Client Side Rendering" mientras que el desarrollo "backend" está más vinculado con "Server Side Rendering", aunque la frontera entre ambos contextos es muy difusa y lo que encontramos habitualmente es una mezcla de ellas en el desarrollo de un mismo proyecto.
 
 **Muchas de las aplicaciones web actuales utilizan ambas tecnologías**: la ejecución de código en el servidor y en el cliente. Así, el código que se ejecuta en el servidor genera páginas web que ya incluyen código destinado a su ejecución en el navegador. Aquellas personas que se dedican al desarrollo de una aplicación en toda su extensión ("frontend" + "backend") se dice que trabajan en **desarrollo fullstack**.
 

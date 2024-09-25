@@ -4,7 +4,7 @@ Django
 
 `Django`_ es un framework de desarrollo web de alto nivel, gratuito y de código abierto, **escrito en Python**.
 
-Se utiliza para crear aplicaciones web de forma rápida y segura, ya que proporciona una estructura lista para usar, incluyendo funcionalidades comunes como autenticación de usuarios, administración de contenido, mapas del sitio, entre otros. Django es altamente escalable y puede manejar miles de solicitudes, y su arquitectura está diseñada para utilizar eficientemente el hardware del sistema. Además, ofrece características avanzadas de seguridad y es ampliamente utilizado en la industria.
+Se utiliza para crear aplicaciones web de forma rápida y segura, ya que proporciona una estructura lista para usar, incluyendo funcionalidades comunes como autenticación de usuarios, administración de contenido o manejo de formularios, entre otros. Django es altamente escalable y puede manejar miles de solicitudes, y su arquitectura está diseñada para utilizar eficientemente el hardware del sistema. Además, ofrece características avanzadas de seguridad y es ampliamente utilizado en la industria.
 
 Fue creado por `Adrian Holovaty`_ , `Simon Willison`_, `Jacob Kaplan-Moss`_ y `Wilson Miner`_ en 2005.
 
@@ -28,7 +28,7 @@ Los desarrolladores originales de Django, Adrian Holovaty y Simon Willison, eran
 Versiones
 *********
 
-A continuación se muestran las versiones mayores de Django con su año de lanzamiento:
+A continuación se muestran las versiones **mayores** de Django con su año de lanzamiento:
 
 .. csv-table:: Versiones mayores de Django
     :file: tables/django-releases.csv
@@ -38,7 +38,7 @@ A continuación se muestran las versiones mayores de Django con su año de lanza
 Características
 ***************
 
-Estas son solo algunas de las características principales de Django que hacen que sea **uno de los frameworks web más populares y potentes disponibles en el ecosistema de desarrollo web de Python**:
+A continuación se muestran algunas de las características más importantes de Django:
 
 Diseño basado en el principio de "baterías incluidas":
     Django viene con una variedad de características integradas para ayudar en el desarrollo web, como un ORM (Mapeador Objeto-Relacional) potente para interactuar con la base de datos, un sistema de administración de contenido, autenticación de usuarios, formularios web, entre otros.
@@ -64,6 +64,8 @@ Escalabilidad y rendimiento:
 Soporte para internacionalización y localización:
     Django facilita la creación de aplicaciones web multilingües gracias a su soporte integrado para la internacionalización y la localización. Esto permite que las aplicaciones se adapten a diferentes idiomas y regiones de forma sencilla.
 
+Estas y otras funcionalidades hacen que Django sea **uno de los frameworks web más populares y potentes disponibles en el ecosistema de desarrollo web de Python**.
+
 ******************
 ¿Quién usa Django?
 ******************
@@ -75,6 +77,15 @@ Grandes empresas y sitios destacados que utilizan Django incluyen:
 
 Estas empresas confían en Django debido a su alta calidad, seguridad y funcionalidades, respaldadas por una sólida infraestructura de soporte y una comunidad activa.
 
+Comparando con otras tecnologías
+================================
+
+En la encuesta a desarrolladores/as de `Stack Overflow (2024)`_, Django ocupaba el décimo puesto de los frameworks web más utilizados:
+
+.. image:: images/django/stackoverflow-survey-2024.png
+    :align: center
+
+
 
 .. --------------- Hyperlinks ---------------
 
@@ -85,3 +96,4 @@ Estas empresas confían en Django debido a su alta calidad, seguridad y funciona
 .. _Jacob Kaplan-Moss: https://jacobian.org/
 .. _Wilson Miner: https://wilsonminer.com/
 .. _Michael Ochs: https://www.gettyimages.es/search/photographer?photographer=Michael%20Ochs%20Archives
+.. _Stack Overflow (2024): https://survey.stackoverflow.co/2024/technology/#1-web-frameworks-and-technologies

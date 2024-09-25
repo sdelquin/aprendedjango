@@ -6,15 +6,22 @@ Cuando se programa una **aplicación** se hace utilizando un **lenguaje de progr
 
 En este bloque veremos **distintas tecnologías** que se pueden utilizar para **programar aplicaciones** que se ejecuten en un **servidor web**, y cómo se relacionan unas con otras. Analizaremos las ventajas e inconvenientes de utilizar cada una, y qué lenguajes de programación se deben aprender para utilizarlas.
 
+*******************************
+Componentes para desarrollo web
+*******************************
+
 Los **componentes principales** con los que se debe contar para ejecutar aplicaciones web en un servidor son los siguientes:
 
 1. Un **servidor web** para recibir las peticiones de los clientes web (normalmente navegadores) y enviarles la página que solicitan (una vez generada puesto que hablamos de páginas web dinámicas). El servidor web debe conocer el procedimiento a seguir para generar la página web: qué módulo se encargará de la ejecución del código y cómo se debe comunicar con él.
 
-2. El **módulo encargado de ejecutar el código** y generar la página web resultante. Este módulo debe integrarse de alguna forma con el servidor web, y dependerá del lenguaje y tecnología que utilicemos para programar la aplicación web.
+2. El **módulo encargado de ejecutar el código** y generar la página web resultante. Este módulo debe integrarse de alguna forma con el servidor web, y dependerá del lenguaje y tecnología que utilicemos para programar la aplicación web. También se conoce por **servidor de aplicación**.
 
 3. Un **sistema gestor de base de datos**. Este módulo no es estrictamente necesario pero en la práctica se utiliza en todas las aplicaciones web que manejan ciertas cantidades de datos o información.
 
 4. El **lenguaje de programación** que utilizarás para desarrollar las aplicaciones.
+
+Modelo por capas
+================
 
 Además de los citados componentes, también es importante decidir cómo se va a **organizar el código** de la aplicación. Muchas de las arquitecturas que se usan en programación de aplicaciones web ayudan a estructurar el código de las aplicaciones en **capas o niveles**.
 
@@ -31,7 +38,7 @@ En una aplicación se puede distinguir, de forma general, funciones de **present
 Elección de la arquitectura web
 *******************************
 
-La primera elección antes de comenzar a programar una aplicación web es **elegir la arquitectura** a utilizar.
+La primera decisión antes de comenzar a programar una aplicación web es **elegir la arquitectura** a utilizar.
 
 Podríamos diferenciar tres tipos de aspectos en relación con la arquitectura de una aplicación web:
 
@@ -103,7 +110,7 @@ Si queremos ver una muestra de lenguajes utilizados en la industria podemos echa
 Framework web
 =============
 
-Los llamados "framework web" constituyen un conjunto de módulos que **permiten el desarrollo ágil de aplicaciones web** mediante la aportación de librerías y/o funcionalidades ya creadas.
+Los llamados "framework web" ofrecen un conjunto de librerías y funcionalidades que **permiten el desarrollo ágil de aplicaciones web** facilitando muchas de las tareas habituales que se suelen llevar a cabo en este tipo de proyectos.
 
 En su gran mayoría, los framework web se basan en una arquitectura "MVC" o "Modelo-Vista-Controlador":
 
@@ -129,9 +136,9 @@ Un ejemplo de plantilla:
 Integración con servidor web
 ============================
 
-La comunicación entre un cliente web (navegador) y un servidor web se lleva a cabo gracias al **protocolo HTTP**. En el caso de las aplicaciones web, HTTP es el vínculo de unión entre el usuario y la aplicación en sí. Cualquier introducción de información que realice el usuario se transmite mediante una petición HTTP, y el resultado que obtiene le llega por medio de una respuesta HTTP.
+La comunicación entre un cliente web (navegador) y un servidor web se lleva a cabo gracias al **protocolo HTTP**. En el caso de las aplicaciones web, HTTP es el vínculo de unión entre el usuario y la aplicación en sí. El envío de información de un usuario se convierte en una **petición HTTP** y el resultado que obtiene le llega por medio de una **respuesta HTTP**.
 
-En el lado del servidor, estas peticiones son procesadas por el servidor web. Es por tanto el servidor web el encargado de decidir cómo procesar las peticiones que recibe. Cada una de las arquitecturas que acabamos de ver tiene **una forma de integrarse con el servidor web** para ejecutar el código de la aplicación, derivando este procesamiento a un **servidor de aplicación**.
+En el lado del servidor, estas peticiones son procesadas por el servidor web. Es por tanto el servidor web el encargado de decidir cómo procesar las peticiones que recibe. Cada una de las arquitecturas que acabamos de ver tiene **una forma de integrarse con el servidor web** para ejecutar el código de la aplicación, delegando este procesamiento a un **servidor de aplicación**.
 
 **Ejemplos de integración** de servidores de aplicación con servidores web:
 
